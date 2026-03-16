@@ -1,6 +1,7 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class PuzzleManager : MonoBehaviour
 {
@@ -19,8 +20,15 @@ public class PuzzleManager : MonoBehaviour
 
     public int emptySpaceIndex = 8;
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForEndOfFrame();
+
+        if (gridLayout != null)
+        {
+            gridLayout.enabled = false;
+        }
+
         for (int i = 0; i < tiles.Count; i++)
         {
             Image tileImage = tiles[i].GetComponent<Image>();
@@ -29,11 +37,6 @@ public class PuzzleManager : MonoBehaviour
                 tileImage.sprite = puzzleSprites[i];
             }
             tiles[i].Init(i, this);
-        }
-
-        if (gridLayout != null)
-        {
-            gridLayout.enabled = false;
         }
 
         Shuffle();
