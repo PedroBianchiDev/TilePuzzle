@@ -9,55 +9,43 @@ public class PuzzleManager : MonoBehaviour
     public GridLayoutGroup gridLayout;
     public List<Tile> tiles;
     public Transform emptySpace;
+    public int emptySpaceIndex = 8;
 
     [Header("Imagem Fatiada")]
     public Sprite[] puzzleSprites;
 
     [Header("Configurações de Jogo")]
-    public float tempoMaximo = 60f; 
-    private float tempoAtual;
     private bool jogoAtivo = false;
+    public GameTimer gameTimer;
 
-    public int emptySpaceIndex = 8;
+    [Header("Painel Win or Lose")]
+    public GameObject painelVitoria;
+    public GameObject painelDerrota;
+
 
     IEnumerator Start()
     {
+        painelVitoria.SetActive(false);
+        painelDerrota.SetActive(false);
+
         yield return new WaitForEndOfFrame();
 
-        if (gridLayout != null)
-        {
-            gridLayout.enabled = false;
-        }
+        if (gridLayout != null) gridLayout.enabled = false;
 
         for (int i = 0; i < tiles.Count; i++)
         {
             Image tileImage = tiles[i].GetComponent<Image>();
-            if (tileImage != null && i < puzzleSprites.Length)
-            {
-                tileImage.sprite = puzzleSprites[i];
-            }
+            if (tileImage != null && i < puzzleSprites.Length) tileImage.sprite = puzzleSprites[i];
             tiles[i].Init(i, this);
         }
 
         Shuffle();
 
-        tempoAtual = tempoMaximo;
         jogoAtivo = true;
-    }
 
-    void Update()
-    {
-        if (jogoAtivo)
+        if (gameTimer != null)
         {
-            tempoAtual -= Time.deltaTime;
-
-            // textoTempo.text = Mathf.Ceil(tempoAtual).ToString();
-
-            if (tempoAtual <= 0)
-            {
-                tempoAtual = 0;
-                Derrota();
-            }
+            gameTimer.IniciarTempo();
         }
     }
 
@@ -120,7 +108,6 @@ public class PuzzleManager : MonoBehaviour
             emptyRect.anchoredPosition = tileRect.anchoredPosition;
             tileRect.anchoredPosition = tempPos;
 
-            // Troca lógica
             int tempIndex = pecaEscolhida.currentPositionIndex;
             pecaEscolhida.currentPositionIndex = emptySpaceIndex;
             emptySpaceIndex = tempIndex;
@@ -142,12 +129,18 @@ public class PuzzleManager : MonoBehaviour
     private void Vitoria()
     {
         jogoAtivo = false;
-        Debug.Log("Você Venceu!");
+
+        if (gameTimer != null)
+        {
+            gameTimer.PararTempo();
+        }
+
+        if (painelVitoria != null) painelVitoria.SetActive(true);
     }
 
-    private void Derrota()
+    public void Derrota()
     {
         jogoAtivo = false;
-        Debug.Log("Tempo Esgotado! Game Over.");
+        if (painelDerrota != null) painelDerrota.SetActive(true);
     }
 }
