@@ -9,8 +9,9 @@ public class PuzzleManager : MonoBehaviour
     public GridLayoutGroup gridLayout;
     public List<Tile> tiles;
     public Transform emptySpace;
-    public int emptySpaceIndex = 8;
-
+    public int tamanhoDoGrid = 3;
+    public int emptySpaceIndex = 0;
+    
     [Header("Imagem Fatiada")]
     public Sprite[] puzzleSprites;
 
@@ -25,6 +26,8 @@ public class PuzzleManager : MonoBehaviour
 
     IEnumerator Start()
     {
+        emptySpaceIndex = (tamanhoDoGrid * tamanhoDoGrid) - 1;
+
         painelVitoria.SetActive(false);
         painelDerrota.SetActive(false);
 
@@ -79,8 +82,8 @@ public class PuzzleManager : MonoBehaviour
 
     private bool IsAdjacent(int index1, int index2)
     {
-        if (index1 / 3 == index2 / 3 && Mathf.Abs(index1 - index2) == 1) return true;
-        if (index1 % 3 == index2 % 3 && Mathf.Abs(index1 - index2) == 3) return true;
+        if (index1 / tamanhoDoGrid == index2 / tamanhoDoGrid && Mathf.Abs(index1 - index2) == 1) return true;
+        if (index1 % tamanhoDoGrid == index2 % tamanhoDoGrid && Mathf.Abs(index1 - index2) == tamanhoDoGrid) return true;
         return false;
     }
 
