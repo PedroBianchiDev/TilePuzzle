@@ -133,6 +133,15 @@ public class PuzzleManager : MonoBehaviour
         if (gameTimer != null)
         {
             gameTimer.PararTempo();
+
+            int goldGanhoNestaPartida = gameTimer.ObterTempoRestante();
+
+            int goldAcumulado = PlayerPrefs.GetInt("GoldTotal", 0);
+
+            PlayerPrefs.SetInt("GoldTotal", goldAcumulado + goldGanhoNestaPartida);
+            PlayerPrefs.Save(); 
+
+            Debug.Log("Você ganhou " + goldGanhoNestaPartida + " moedas! Total agora: " + (goldAcumulado + goldGanhoNestaPartida));
         }
 
         if (painelVitoria != null) painelVitoria.SetActive(true);

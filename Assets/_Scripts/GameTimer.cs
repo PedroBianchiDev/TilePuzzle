@@ -40,6 +40,11 @@ public class GameTimer : MonoBehaviour
         }
     }
 
+    public int ObterTempoRestante()
+    {
+        return Mathf.CeilToInt(tempoAtual);
+    }
+
     public void IniciarTempo()
     {
         tempoRodando = true;
