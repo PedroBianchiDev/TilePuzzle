@@ -6,6 +6,11 @@ public class MenuManager : MonoBehaviour
     public GameObject painelPrincipal;
     public GameObject painelFases;
 
+    private void Start()
+    {
+        painelFases.SetActive(false);
+    }
+
     public void AbrirSelecaoDeFases()
     {
         painelPrincipal.SetActive(false);
