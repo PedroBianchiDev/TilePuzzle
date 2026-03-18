@@ -646,7 +646,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &433285762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1645,6 +1645,7 @@ MonoBehaviour:
   - {fileID: 1530140642}
   - {fileID: 1598964053}
   emptySpace: {fileID: 941580949}
+  tamanhoDoGrid: 3
   emptySpaceIndex: 8
   puzzleSprites:
   - {fileID: 1405846065, guid: 388cfb1438fe7a541a8af7f3800ebe0a, type: 3}
