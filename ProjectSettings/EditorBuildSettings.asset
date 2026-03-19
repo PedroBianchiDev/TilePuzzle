@@ -9,9 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/MenuInicial.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Fases/MegaManExE.unity
+    path: Assets/Scenes/Fases/Mickey.unity
     guid: b0826d857eabba241a7b7e9c695fb791
   - enabled: 1
     path: Assets/Scenes/Fases/SpiderMan.unity
     guid: 73f81d98dd1e83a48b863a35b78f112f
+  - enabled: 1
+    path: Assets/Scenes/Fases/Pikachu.unity
+    guid: 7ecab1f9011871e4ab8c6e85a7ce367b
   m_configObjects: {}
