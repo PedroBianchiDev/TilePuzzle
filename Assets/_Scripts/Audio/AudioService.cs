@@ -1,5 +1,6 @@
 using System.Linq;
 using TilePuzzle.Core;
+using TilePuzzle.Save;
 using UnityEngine;
 
 namespace TilePuzzle.Audio
@@ -21,7 +22,13 @@ namespace TilePuzzle.Audio
 
         public override void Initialize()
         {
+            ApplicationData appData = Core.Application.Instance.GetService<SaveService>().GetApplicationData();
 
+            if (appData != null)
+            {
+                musicVolume = appData.isMusicMuted ? 0f : 1f;
+                sfxVolume = appData.isSfxMuted ? 0f : 1f;
+            }
         }
 
         public void PlaySong(string songId)
@@ -47,13 +54,13 @@ namespace TilePuzzle.Audio
             sfxSource.Play();
         }
 
-        private void SetMusicVolume(float volume)
+        public void SetMusicVolume(float volume)
         {
             musicVolume = Mathf.Clamp01(volume);
             musicSource.volume = musicVolume;
         }
 
-        private void SetSFXVolume(float volume)
+        public void SetSFXVolume(float volume)
         {
             sfxVolume = Mathf.Clamp01(volume);
             sfxSource.volume = musicVolume;

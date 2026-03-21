@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TilePuzzle.Audio;
 using UnityEngine;
 
 namespace TilePuzzle.Gameplay
@@ -11,6 +12,7 @@ namespace TilePuzzle.Gameplay
 
         [Header("Menu Level Settings")]
         public Sprite artDisplayer;
+   
         public int levelCost = 0;
         public bool blocked = false;
 

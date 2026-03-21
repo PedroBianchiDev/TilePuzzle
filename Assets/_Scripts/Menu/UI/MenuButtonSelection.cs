@@ -7,7 +7,6 @@ namespace TilePuzzle.Menu
 {
     public class MenuButtonSelection : PanelBase
     {
-        [SerializeField]
         private MenuCanvasManager menuCanvasManager;
 
         [SerializeField]
@@ -26,17 +25,11 @@ namespace TilePuzzle.Menu
                 menuCanvasManager.ChangeActivePanel("LevelSelection");
             });
 
+            optionsButton.onClick.AddListener(() => {
+                menuCanvasManager.ChangeActivePanel("Options");
+            });
+
             exitButton.onClick.AddListener(QuitGame);
-        }
-
-        public override void OnHide()
-        {
-            this.gameObject.SetActive(false);
-        }
-
-        public override void OnShow()
-        {
-            this.gameObject.SetActive(true);
         }
 
         private void QuitGame()

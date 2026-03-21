@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace TilePuzzle.Save
 {
@@ -6,5 +7,6 @@ namespace TilePuzzle.Save
     public class PlayerData
     {
         public int gold;
+        public List<string> boughtLevels = new();
     }
 }

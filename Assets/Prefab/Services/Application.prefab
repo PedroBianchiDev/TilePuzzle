@@ -165,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4541947230637771352
 Transform:
   m_ObjectHideFlags: 0
@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 7990859086849755493}
   - component: {fileID: 8885350879472907428}
   m_Layer: 0
-  m_Name: Application 1
+  m_Name: Application
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -759,8 +759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77a01f43c31f29b49ba38f8390872833, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadingScreen: {fileID: 0}
-  loadingBarFill: {fileID: 0}
+  loadingScreen: {fileID: 1754825946612522114}
+  loadingBarFill: {fileID: 7836689176031661354}
+  selectedLevel: {fileID: 11400000, guid: 16a0f2a7b191bc34fab8c8aaf7416334, type: 2}
 --- !u!1 &9187249031021044096
 GameObject:
   m_ObjectHideFlags: 0
@@ -805,3 +806,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c967bd5c9e13b540a2271a7fc1c09a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerData:
+    gold: 0
+    boughtLevels: []
+  applicationData:
+    isMusicMuted: 0
+    isSfxMuted: 0

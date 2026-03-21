@@ -1,3 +1,4 @@
+using TilePuzzle.Audio;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -80,8 +81,7 @@ namespace TilePuzzle.Gameplay
             }
             else
             {
-                // Opcional: som
-                // Application.instance.GetService<AudioManager>().TocarSFX();
+                //Core.Application.Instance.GetService<AudioService>().PlaySFX("MovTile");
             }
         }
 

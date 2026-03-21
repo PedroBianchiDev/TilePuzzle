@@ -17,9 +17,19 @@ MonoBehaviour:
     audioFiles:
     - id: MenuSong
       clip: {fileID: 8300000, guid: 03eca161a2ef89b479f33a5d683a6059, type: 3}
+    - id: MickeyTheme
+      clip: {fileID: 8300000, guid: 928075ce6905d6f4aa1d6548ac6ad28f, type: 3}
+    - id: SpiderManTheme
+      clip: {fileID: 8300000, guid: 2f0db7b460cc87640a859176c0b885ee, type: 3}
+    - id: PikachuTheme
+      clip: {fileID: 8300000, guid: e3aa10f3b7f7fb247a3ed2b9214f79a2, type: 3}
   - type: 1
     audioFiles:
     - id: VictorySFX
       clip: {fileID: 8300000, guid: ab3e4e0b54816cf4b91a2a145ed98cb5, type: 3}
+    - id: LoseSFX
+      clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}
     - id: BuySFX
       clip: {fileID: 8300000, guid: eaa9d87de74030b43a6a5df4001cb360, type: 3}
+    - id: MovTile
+      clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}
