@@ -1,57 +1,61 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-public class GameTimer : MonoBehaviour
+
+namespace TilePuzzle.Gameplay
 {
-    public float tempoMaximo = 60f;
-    private float tempoAtual;
-    private bool tempoRodando = false;
-
-    [Header("Referências")]
-    public TextMeshProUGUI textoTempo; 
-    public PuzzleManager puzzleManager; 
-
-    void Start()
+    public class GameTimer : MonoBehaviour
     {
-        tempoAtual = tempoMaximo;
-    }
+        private float currentTime;
+        private bool isRunning = false;
 
-    void Update()
-    {
-        if (tempoRodando)
+        [Header("Referências")]
+        public TextMeshProUGUI textoTempo;
+        private PuzzleManager puzzleManager;
+
+        public void Initialize(PuzzleManager puzzleManager)
         {
-            tempoAtual -= Time.deltaTime;
+            this.puzzleManager = puzzleManager;
+            currentTime = puzzleManager.level.timer;
+            textoTempo.text = Mathf.Ceil(currentTime).ToString() + "s";
+        }
 
-            if (textoTempo != null)
+        void Update()
+        {
+            if (isRunning)
             {
-                textoTempo.text = Mathf.Ceil(tempoAtual).ToString() + "s";
-            }
+                currentTime -= Time.deltaTime;
 
-            if (tempoAtual <= 0)
-            {
-                tempoAtual = 0;
-                PararTempo();
-
-                if (puzzleManager != null)
+                if (textoTempo != null)
                 {
-                    puzzleManager.Derrota();
+                    textoTempo.text = Mathf.Ceil(currentTime).ToString() + "s";
+                }
+
+                if (currentTime <= 0)
+                {
+                    currentTime = 0;
+                    StopTimer();
+
+                    if (puzzleManager != null)
+                    {
+                        puzzleManager.Derrota();
+                    }
                 }
             }
         }
-    }
 
-    public int ObterTempoRestante()
-    {
-        return Mathf.CeilToInt(tempoAtual);
-    }
+        public int ObterTempoRestante()
+        {
+            return Mathf.CeilToInt(currentTime);
+        }
 
-    public void IniciarTempo()
-    {
-        tempoRodando = true;
-    }
+        public void StartTimer()
+        {
+            isRunning = true;
+        }
 
-    public void PararTempo()
-    {
-        tempoRodando = false;
+        public void StopTimer()
+        {
+            isRunning = false;
+        }
     }
 }

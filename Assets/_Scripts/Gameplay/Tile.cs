@@ -1,54 +1,95 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Tile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+namespace TilePuzzle.Gameplay
 {
-    public int correctPositionIndex;
-    public int currentPositionIndex;
-
-    private PuzzleManager puzzleManager;
-    private RectTransform rectTransform;
-    private Canvas canvas;
-
-    public Vector2 startPosition;
-
-    public void Init(int correctIndex, PuzzleManager manager)
+    public class Tile : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        correctPositionIndex = correctIndex;
-        currentPositionIndex = correctIndex;
-        puzzleManager = manager;
+        public int correctPositionIndex;
+        public int currentPositionIndex;
 
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
-    }
+        private Image image;
+        private PuzzleManager puzzleManager;
+        private RectTransform rectTransform;
 
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        startPosition = rectTransform.anchoredPosition;
+        [SerializeField] private Canvas canvas;
 
-        transform.SetAsLastSibling();
-    }
+        private Transform originalParent;
+        public Vector2 startPosition;
+        private Vector2 offset;
 
-    public void OnDrag(PointerEventData eventData)
-    {
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        bool moveSuccessful = puzzleManager.TryMoveTile(this);
-
-        if (moveSuccessful)
+        public void Init(int correctIndex, PuzzleManager manager, Sprite sprite)
         {
-            if (AudioManager.instance != null) AudioManager.instance.TocarSFX(AudioManager.instance.somMoverPeca);
+            image = GetComponent<Image>();
+            image.sprite = sprite;
+
+            correctPositionIndex = correctIndex;
+            currentPositionIndex = correctIndex;
+            puzzleManager = manager;
+
+            rectTransform = GetComponent<RectTransform>();
+            canvas = GetComponentInParent<Canvas>();
         }
-        else
+
+        public void OnBeginDrag(PointerEventData eventData)
         {
-            rectTransform.anchoredPosition = startPosition;
+            if (!puzzleManager.isGameActive) return;
+
+            startPosition = rectTransform.anchoredPosition;
+            originalParent = transform.parent;
+
+            transform.SetParent(puzzleManager.gameplayObject);
+            transform.SetAsLastSibling();
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,
+                eventData.position,
+                canvas.worldCamera,
+                out Vector2 localPoint
+            );
+
+            offset = rectTransform.anchoredPosition - localPoint;
         }
-    }
-    public void MoveToPosition(Vector2 newPosition)
-    {
-        rectTransform.anchoredPosition = newPosition;
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (!puzzleManager.isGameActive) return;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvas.transform as RectTransform,
+                eventData.position,
+                canvas.worldCamera,
+                out Vector2 localPoint
+            );
+
+            rectTransform.anchoredPosition = localPoint + offset;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (!puzzleManager.isGameActive) return;
+
+            transform.SetParent(originalParent);
+
+            bool moveSuccessful = puzzleManager.TryMoveTile(this);
+
+            if (!moveSuccessful)
+            {
+                rectTransform.anchoredPosition = startPosition;
+            }
+            else
+            {
+                // Opcional: som
+                // Application.instance.GetService<AudioManager>().TocarSFX();
+            }
+        }
+
+        public void MoveToPosition(Vector2 newPosition)
+        {
+            if (!puzzleManager.isGameActive) return;
+
+            rectTransform.anchoredPosition = newPosition;
+        }
     }
 }
