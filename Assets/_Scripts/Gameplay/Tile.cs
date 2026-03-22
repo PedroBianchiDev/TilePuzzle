@@ -81,7 +81,7 @@ namespace TilePuzzle.Gameplay
             }
             else
             {
-                //Core.Application.Instance.GetService<AudioService>().PlaySFX("MovTile");
+                Core.Application.Instance.GetService<AudioService>().PlaySFX("MovTile");
             }
         }
 

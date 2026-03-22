@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TilePuzzle.Audio;
 using TilePuzzle.Save;
 using TilePuzzle.Scenes;
 using UnityEngine;
@@ -34,6 +35,20 @@ namespace TilePuzzle.Gameplay
         IEnumerator Start()
         {
             level = Core.Application.Instance.GetService<SceneService>().selectedLevel ?? level;
+
+            if (level.levelId == "Mickey")
+            {
+                Core.Application.Instance.GetService<AudioService>().PlaySong("MickeyTheme");
+            }
+            else if (level.levelId == "SpiderMan")
+            {
+                Core.Application.Instance.GetService<AudioService>().PlaySong("SpiderManTheme");
+            }
+            else
+            {
+                Core.Application.Instance.GetService<AudioService>().PlaySong("PikachuTheme");
+            }
+
             if (level == null) yield return null;
 
             emptySpaceIndex = (level.gridSize * level.gridSize) - 1;

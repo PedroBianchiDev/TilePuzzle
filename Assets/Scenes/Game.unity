@@ -1544,11 +1544,56 @@ PrefabInstance:
       propertyPath: Services.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8885350879472907428, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+      propertyPath: Services.Array.data[0]
+      value: 
+      objectReference: {fileID: 1887720684}
+    - target: {fileID: 8885350879472907428, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+      propertyPath: Services.Array.data[1]
+      value: 
+      objectReference: {fileID: 1887720683}
+    - target: {fileID: 8885350879472907428, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+      propertyPath: Services.Array.data[2]
+      value: 
+      objectReference: {fileID: 1887720682}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+--- !u!114 &1887720682 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2978576601013736323, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+  m_PrefabInstance: {fileID: 1887720681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77a01f43c31f29b49ba38f8390872833, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1887720683 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5680828917368118093, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+  m_PrefabInstance: {fileID: 1887720681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08cdaf767e4f70a489bc784d9866b825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1887720684 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8623853051597138044, guid: 3650fd57f1b9ae040adad4e040810940, type: 3}
+  m_PrefabInstance: {fileID: 1887720681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c967bd5c9e13b540a2271a7fc1c09a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1908442001
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,7 +1828,7 @@ MonoBehaviour:
           m_StringArgument: Lose
           m_BoolArgument: 0
         m_CallState: 2
-  level: {fileID: 11400000, guid: ccbf272d0e37b6540a95878fca5cb09a, type: 2}
+  level: {fileID: 11400000, guid: 781211d556479ac44a460d169452a964, type: 2}
 --- !u!4 &2107072973
 Transform:
   m_ObjectHideFlags: 0

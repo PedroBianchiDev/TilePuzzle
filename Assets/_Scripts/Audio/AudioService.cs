@@ -26,7 +26,7 @@ namespace TilePuzzle.Audio
 
             if (appData != null)
             {
-                musicVolume = appData.isMusicMuted ? 0f : 1f;
+                musicVolume = appData.isMusicMuted ? 0f : 0.09f;
                 sfxVolume = appData.isSfxMuted ? 0f : 1f;
             }
         }
@@ -63,7 +63,7 @@ namespace TilePuzzle.Audio
         public void SetSFXVolume(float volume)
         {
             sfxVolume = Mathf.Clamp01(volume);
-            sfxSource.volume = musicVolume;
+            sfxSource.volume = sfxVolume;
         }
 
         private AudioGroup GetAudioGroupByType(AudioType audioType)

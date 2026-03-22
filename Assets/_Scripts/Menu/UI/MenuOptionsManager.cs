@@ -32,7 +32,10 @@ namespace TilePuzzle.Menu
             musicButtonImage = musicButton.GetComponent<Image>();
             sfxButtonImage = sfxButton.GetComponent<Image>();
 
-            backButton.onClick.AddListener(() => menuCanvasManager.ChangeActivePanel("ButtonSelection"));
+            backButton.onClick.AddListener(() => {
+                Core.Application.Instance.GetService<AudioService>().PlaySFX("Click");
+                menuCanvasManager.ChangeActivePanel("ButtonSelection");
+            });
 
             ApplicationData applicationData = Core.Application.Instance.GetService<SaveService>().GetApplicationData();
 

@@ -16,6 +16,7 @@ namespace TilePuzzle.Core
             if (Instance == null)
             {
                 Instance = this;
+                DontDestroyOnLoad(gameObject);
             }
             else
             {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TilePuzzle.Audio;
 using TilePuzzle.Gameplay;
 using TilePuzzle.Save;
 using TilePuzzle.Scenes;
@@ -40,7 +41,11 @@ namespace TilePuzzle.Menu
         public override void Initialize(CanvasManager canvasManager)
         {
             menuCanvasManager = canvasManager as MenuCanvasManager;
-            backButton.onClick.AddListener(() => menuCanvasManager.ChangeActivePanel("ButtonSelection"));
+            backButton.onClick.AddListener(() =>
+            {
+                Core.Application.Instance.GetService<AudioService>().PlaySFX("Click");
+                menuCanvasManager.ChangeActivePanel("ButtonSelection");
+            });
         }
 
         private void InstantiateLevels()

@@ -21,15 +21,25 @@ namespace TilePuzzle.Menu
         public override void Initialize(CanvasManager canvasManager)
         {
             menuCanvasManager = canvasManager as MenuCanvasManager;
+
             playButton.onClick.AddListener(() => {
+                Click();
                 menuCanvasManager.ChangeActivePanel("LevelSelection");
             });
 
             optionsButton.onClick.AddListener(() => {
+                Click();
                 menuCanvasManager.ChangeActivePanel("Options");
             });
 
-            exitButton.onClick.AddListener(QuitGame);
+            exitButton.onClick.AddListener(() => {
+                QuitGame();
+            });
+        }
+
+        private void Click()
+        {
+            Core.Application.Instance.GetService<AudioService>().PlaySFX("Click");
         }
 
         private void QuitGame()

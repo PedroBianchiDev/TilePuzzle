@@ -33,3 +33,5 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: eaa9d87de74030b43a6a5df4001cb360, type: 3}
     - id: MovTile
       clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}
+    - id: Click
+      clip: {fileID: 8300000, guid: 3462d2fe5c30c5046b30639220cfc64a, type: 3}
