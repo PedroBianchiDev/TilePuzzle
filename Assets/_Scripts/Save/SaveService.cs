@@ -14,6 +14,7 @@ namespace TilePuzzle.Save
         public override void Initialize()
         {
             LoadApplicationData();
+            //PlayerPrefs.DeleteAll();
         }
 
         public PlayerData GetPlayerData() => playerData;

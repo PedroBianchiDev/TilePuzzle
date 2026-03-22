@@ -23,15 +23,15 @@ MonoBehaviour:
       clip: {fileID: 8300000, guid: 2f0db7b460cc87640a859176c0b885ee, type: 3}
     - id: PikachuTheme
       clip: {fileID: 8300000, guid: e3aa10f3b7f7fb247a3ed2b9214f79a2, type: 3}
+    - id: PikachuTheme
+      clip: {fileID: 8300000, guid: e3aa10f3b7f7fb247a3ed2b9214f79a2, type: 3}
+    - id: Victory
+      clip: {fileID: 8300000, guid: ab3e4e0b54816cf4b91a2a145ed98cb5, type: 3}
+    - id: Lose
+      clip: {fileID: 8300000, guid: f60e24e924dfa194a9da50db7bfc0c17, type: 3}
   - type: 1
     audioFiles:
-    - id: VictorySFX
-      clip: {fileID: 8300000, guid: ab3e4e0b54816cf4b91a2a145ed98cb5, type: 3}
-    - id: LoseSFX
-      clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}
-    - id: BuySFX
-      clip: {fileID: 8300000, guid: eaa9d87de74030b43a6a5df4001cb360, type: 3}
-    - id: MovTile
-      clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}
     - id: Click
       clip: {fileID: 8300000, guid: 3462d2fe5c30c5046b30639220cfc64a, type: 3}
+    - id: MovTile
+      clip: {fileID: 8300000, guid: 339aaa492b903044c84b2983c28fa9ee, type: 3}

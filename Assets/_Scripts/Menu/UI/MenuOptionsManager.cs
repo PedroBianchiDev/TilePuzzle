@@ -79,7 +79,7 @@ namespace TilePuzzle.Menu
             applicationData.isSfxMuted = !applicationData.isSfxMuted;
             saveService.SaveApplicationData();
             int sfxSpriteIndex = applicationData.isSfxMuted ? 1 : 0;
-            audioService.SetSFXVolume(applicationData.isMusicMuted ? 0 : 1);
+            audioService.SetSFXVolume(applicationData.isSfxMuted ? 0 : 1);
             sfxButtonImage.sprite = buttonSprites[sfxSpriteIndex];
         }
     }

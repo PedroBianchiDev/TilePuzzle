@@ -26,7 +26,7 @@ namespace TilePuzzle.Audio
 
             if (appData != null)
             {
-                musicVolume = appData.isMusicMuted ? 0f : 0.09f;
+                musicVolume = appData.isMusicMuted ? 0f : 0.1f;
                 sfxVolume = appData.isSfxMuted ? 0f : 1f;
             }
         }

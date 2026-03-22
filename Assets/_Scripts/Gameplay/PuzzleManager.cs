@@ -181,6 +181,8 @@ namespace TilePuzzle.Gameplay
         {
             isGameActive = false;
 
+            Core.Application.Instance.GetService<AudioService>().PlaySong("Victory");
+
             if (gameTimer != null)
             {
                 gameTimer.StopTimer();
@@ -195,6 +197,8 @@ namespace TilePuzzle.Gameplay
 
         public void Derrota()
         {
+            Core.Application.Instance.GetService<AudioService>().PlaySong("Lose");
+
             isGameActive = false;
             OnLoseGame?.Invoke();
         }
